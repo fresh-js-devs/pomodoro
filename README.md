@@ -50,7 +50,7 @@ A step by step series of examples that tell you how to get a development env run
 
 ## Deployment notes
 Your branches are automatically built and deployed via Netlify.  
-To access them, simply type `your-branch-name--pomodoro.netlify.com` in your browser.
+To access them, simply type `your-branch-name--fjs-pomodoro.netlify.com` in your browser.
 
 ## Authors
 
