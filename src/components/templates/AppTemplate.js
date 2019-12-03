@@ -1,33 +1,57 @@
 import React from "react";
 import styled from "@emotion/styled";
 import "antd/dist/antd.css";
-import { Typography, Layout, Row, Col, InputNumber, Button } from "antd";
+import { Typography, Layout, InputNumber, Button } from "antd";
+import SiteWrapper from "../atoms/SiteWrapper";
 
 const { Title } = Typography;
 
 const { Header, Footer, Content } = Layout;
 
+const TitleWrapper = styled.div({
+  display: "flex",
+  flexDirection: "row",
+  alignContent: "center"
+});
+
 const AppTemplate = props => {
-  const { onMinutesChange, onSecondsChange, minutes, seconds } = props;
+  const {
+    onMinutesChange,
+    onSecondsChange,
+    minutes,
+    seconds,
+    onGoClick
+  } = props;
   return (
-    <Layout>
-      <Header>
-        <Title>Pomodorify</Title>
-      </Header>
-      <Content>
-        <Row type="flex" align="middle">
-          <Col offset={1} span={3}>Focus time:</Col>
-          <Col span={2}>
+    <SiteWrapper>
+      <Layout>
+        <Header>
+          <TitleWrapper>
+            <Title style={{ color: "white" }}>
+              Pomod
+              <span role="img" aria-label="heart">
+                🍅
+              </span>
+            </Title>
+            <Title style={{ color: "#ff4d4f" }}>rify</Title>
+          </TitleWrapper>
+        </Header>
+
+        <Content>
+          <Title level={3}>Minutes</Title>
+
+          <Title level={3}>
             <InputNumber
-              min={1}
-              max={60}
+              min={0}
+              max={59}
               defaultValue={1}
               value={minutes}
               onChange={event => onMinutesChange(event)}
             />
-          </Col>
-          <Col span={3}>Minutes</Col>
-          <Col span={2}>
+          </Title>
+          <Title level={3}>:</Title>
+
+          <Title level={3}>
             <InputNumber
               min={1}
               max={59}
@@ -35,42 +59,25 @@ const AppTemplate = props => {
               value={seconds}
               onChange={event => onSecondsChange(event)}
             />
-          </Col>
-          <Col span={3}>Seconds</Col>
-        </Row>
+          </Title>
 
-        <Row type="flex">
-          <Col offset={11}>
-            <Button type="primary">GO!</Button>
-          </Col>
-        </Row>
+          <Title level={3}>Seconds</Title>
 
-        <Row type="flex" align="middle">
-          <Col offset={2} span={2}>
-            <Title level={3}>Minutes</Title>
-          </Col>
-          <Col span={1}>
-            <Title level={3}>{minutes}</Title>
-          </Col>
-          <Col span={1}>
-            <Title level={3}>:</Title>
-          </Col>
-          <Col span={1}>
-            <Title level={3}>{seconds}</Title>
-          </Col>
-          <Col span={1}>
-            <Title level={3}>Seconds</Title>
-          </Col>
-        </Row>
+          <Button type="primary" onClick={onGoClick}>
+            GO!
+          </Button>
 
-        <Row type="flex">
-          <Col offset={11}>
-            <Button type="danger">STOP!</Button>
-          </Col>
-        </Row>
-      </Content>
-      <Footer></Footer>
-    </Layout>
+          <Button type="danger">STOP!</Button>
+        </Content>
+
+        <Footer>
+          Pomodorify, made with love{" "}
+          <span role="img" aria-label="heart">
+            ❤️
+          </span>
+        </Footer>
+      </Layout>
+    </SiteWrapper>
   );
 };
 
