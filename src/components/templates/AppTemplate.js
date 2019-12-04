@@ -21,7 +21,7 @@ const RowWrapper = styled.div({
 const ButtonsWrapper = styled.div({
   display: "flex",
   marginTop: "15px",
-  justifyContent: "space-between",
+  justifyContent: "space-around",
   alignItems: "center"
 });
 
@@ -38,7 +38,8 @@ const AppTemplate = props => {
     onSecondsChange,
     minutes,
     seconds,
-    onGoClick
+    onGoClick,
+    zerosDisabledButton
   } = props;
   return (
     <SiteWrapper>
@@ -67,6 +68,7 @@ const AppTemplate = props => {
                 defaultValue={0}
                 value={minutes}
                 onChange={event => onMinutesChange(event)}
+                type="number" pattern="[0-9]*"
               />
             </RowWrapper>
           </RowWrapper>
@@ -81,12 +83,13 @@ const AppTemplate = props => {
                 defaultValue={0}
                 value={seconds}
                 onChange={event => onSecondsChange(event)}
+                type="number" pattern="[0-9]*"
               />
             </RowWrapper>
           </RowWrapper>
 
           <ButtonsWrapper>
-            <Button type="primary" onClick={onGoClick}>
+            <Button type="primary" onClick={onGoClick} disabled={zerosDisabledButton}>
               GO!
             </Button>
             <Button type="danger">STOP!</Button>

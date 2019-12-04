@@ -21,6 +21,8 @@ function App() {
     }, 1000);
   };
 
+  const zerosDisabledButton = minutes === 0 && seconds === 0;
+
   return (
     <AppTemplate
       onMinutesChange={setMinutes}
@@ -28,6 +30,7 @@ function App() {
       minutes={minutes}
       seconds={seconds}
       onGoClick={() => prototypeCounter(minutes, seconds)}
+      zerosDisabledButton={zerosDisabledButton}
     />
   );
 }
