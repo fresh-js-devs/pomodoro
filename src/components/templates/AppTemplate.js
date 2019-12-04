@@ -41,7 +41,7 @@ const AppTemplate = props => {
   } = props;
   return (
     <SiteWrapper>
-      <Layout style={{height:"100vh"}}>
+      <Layout style={{height:"70vh"}}>
         <Header>
           <RowWrapper>
             <Title style={{ color: "white" }}>
