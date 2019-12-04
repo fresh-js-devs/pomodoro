@@ -21,9 +21,9 @@ const RowWrapper = styled.div({
 
 const ButtonsWrapper = styled.div({
   display: "flex",
+  width: "50%",
   marginTop: "15px",
-  justifyContent: "space-around",
-  alignItems: "center"
+  justifyContent: "flex-start",
 });
 
 const FooterWrapper = styled.div({
@@ -59,7 +59,7 @@ const AppTemplate = props => {
   } = props;
   return (
     <SiteWrapper>
-      <Layout style={{ height: "75vh" }}>
+      <Layout style={{ height: "100vh" }}>
         <Header>
           <RowWrapper>
             <Title style={{ color: "white" }}>
@@ -107,6 +107,7 @@ const AppTemplate = props => {
               type="primary"
               onClick={onGoClick}
               disabled={zerosDisabledButton}
+              style={{margin: "0 20px"}}
             >
               GO!
             </Button>
