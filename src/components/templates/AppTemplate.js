@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import "antd/dist/antd.css";
 import { Typography, Layout, InputNumber, Button } from "antd";
 
-const { Title } = Typography;
+const { Title, Paragraph } = Typography;
 
 const { Header, Footer, Content } = Layout;
 
@@ -15,7 +15,8 @@ const SiteWrapper = styled.div({
 
 const RowWrapper = styled.div({
   display: "flex",
-  margin: "10px 0"
+  marginBottom: "20px",
+  marginTop: "5px"
 });
 
 const ButtonsWrapper = styled.div({
@@ -30,7 +31,21 @@ const FooterWrapper = styled.div({
   justifyContent: "flex-end"
 });
 
+const InfoWrapper = styled.div({
+  display: "flex",
+  marginTop: "50px",
+  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "column"
+});
 
+const LegendWrapper = styled.div({
+  display: "flex",
+  marginTop: "45px",
+  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "column"
+});
 
 const AppTemplate = props => {
   const {
@@ -59,42 +74,58 @@ const AppTemplate = props => {
 
         <Content>
           <RowWrapper>
-            <RowWrapper>
-              <Title level={3} style={{ margin: "0 5px" }}>
-                Minutes
-              </Title>
-              <InputNumber
-                min={0}
-                max={59}
-                defaultValue={0}
-                value={minutes}
-                onChange={event => onMinutesChange(event)}
-                type="number" pattern="[0-9]*"
-              />
-            </RowWrapper>
+            <Title level={3} style={{ margin: "0 5px" }}>
+              Minutes
+            </Title>
+            <InputNumber
+              min={0}
+              max={59}
+              defaultValue={0}
+              value={minutes}
+              onChange={event => onMinutesChange(event)}
+              type="number"
+              pattern="[0-9]*"
+            />
           </RowWrapper>
           <RowWrapper>
-            <RowWrapper>
-              <Title level={3} style={{ margin: "0 5px" }}>
-                Seconds
-              </Title>
-              <InputNumber
-                min={0}
-                max={59}
-                defaultValue={0}
-                value={seconds}
-                onChange={event => onSecondsChange(event)}
-                type="number" pattern="[0-9]*"
-              />
-            </RowWrapper>
+            <Title level={3} style={{ margin: "0 5px" }}>
+              Seconds
+            </Title>
+            <InputNumber
+              min={0}
+              max={59}
+              defaultValue={0}
+              value={seconds}
+              onChange={event => onSecondsChange(event)}
+              type="number"
+              pattern="[0-9]*"
+            />
           </RowWrapper>
 
           <ButtonsWrapper>
-            <Button type="primary" onClick={onGoClick} disabled={zerosDisabledButton}>
+            <Button
+              type="primary"
+              onClick={onGoClick}
+              disabled={zerosDisabledButton}
+            >
               GO!
             </Button>
-            <Button type="danger" onClick={onStopClick}>STOP!</Button>
+            <Button type="danger" onClick={onStopClick}>
+              STOP!
+            </Button>
           </ButtonsWrapper>
+
+          <InfoWrapper>
+            <Title>FT{"/"}BT</Title>
+            <Title style={{ margin: 0 }}>
+              {minutes}:{seconds}
+            </Title>
+          </InfoWrapper>
+          <LegendWrapper>
+            <Paragraph>Set your time</Paragraph>
+            <Paragraph>Short break: 5 minutes</Paragraph>
+            <Paragraph>Long break: 10 minutes</Paragraph>
+          </LegendWrapper>
         </Content>
 
         <Footer>
