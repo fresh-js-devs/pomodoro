@@ -39,7 +39,8 @@ const AppTemplate = props => {
     minutes,
     seconds,
     onGoClick,
-    zerosDisabledButton
+    zerosDisabledButton,
+    onStopClick
   } = props;
   return (
     <SiteWrapper>
@@ -92,7 +93,7 @@ const AppTemplate = props => {
             <Button type="primary" onClick={onGoClick} disabled={zerosDisabledButton}>
               GO!
             </Button>
-            <Button type="danger">STOP!</Button>
+            <Button type="danger" onClick={onStopClick}>STOP!</Button>
           </ButtonsWrapper>
         </Content>
 
