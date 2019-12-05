@@ -10,12 +10,15 @@ function App() {
   const [breakLoop, setBreakLoop] = useState(0);
   const [pause, setPause] = useState(false);
 
+  //useEffect for Work Time
   useEffect(() => {
     let secondsLeft = seconds;
     let minutesLeft = minutes;
     let countdown = null;
+    let pauseCountdown = null;
 
     if (isActive) {
+      setPause(false);
       countdown = setInterval(() => {
         if (secondsLeft === 0 && isActive) {
           setMinutes(minutesLeft - 1);
@@ -32,13 +35,30 @@ function App() {
       }, 1000);
     }
 
-    if(pause){
-      countdown = setInterval(() => {
-        
-      },1000)
-    }
-    return () => clearInterval(countdown);
-  }, [minutes, seconds, isActive, workLoop, breakLoop, pause]);
+    // if (pause) {
+    //   setIsActive(false);
+    //   setMinutes(4);
+    //   setSeconds(59);
+    //   pauseCountdown = setInterval(() => {
+    //     if (secondsLeft === 0 && pause) {
+    //       setMinutes(minutesLeft - 1);
+    //       secondsLeft = 60;
+    //     }
+    //     secondsLeft--;
+    //     setSeconds(secondsLeft);
+    //     if (secondsLeft === 0 && minutesLeft === 0) {
+    //       setIsActive(true);
+    //       setPause(pause);
+    //       setWorkLoop(breakLoop + 1);
+    //     }
+    //     if (pause === false) clearInterval(pauseCountdown);
+    //   }, 1000);
+    // }
+
+    return () => {
+      clearInterval(countdown);
+    };
+  }, [minutes, seconds, isActive, workLoop, pause, breakLoop]);
 
   const prototypeCounter = () => {
     setIsActive(true);
@@ -46,6 +66,7 @@ function App() {
 
   const resetTimer = () => {
     setIsActive(false);
+    setPause(false);
     setMinutes(0);
     setSeconds(0);
     setWorkLoop(0);
