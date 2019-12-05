@@ -55,7 +55,9 @@ const AppTemplate = props => {
     seconds,
     onGoClick,
     zerosDisabledButton,
-    onStopClick
+    onStopClick,
+    workLoop,
+    breakLoop
   } = props;
   return (
     <SiteWrapper>
@@ -121,6 +123,8 @@ const AppTemplate = props => {
             <Title style={{ margin: 0 }}>
               {minutes}:{seconds}
             </Title>
+            <Title>Work: {workLoop}</Title>
+            <Title>Break: {breakLoop}</Title>
           </InfoWrapper>
           <LegendWrapper>
             <Paragraph>Set your time</Paragraph>
