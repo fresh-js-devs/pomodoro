@@ -4,12 +4,12 @@ import AppTemplate from "./components/templates/AppTemplate";
 
 function App() {
   const [minutes, setMinutes] = useState(0);
-  const [seconds, setSeconds] = useState(0);
+  const [seconds, setSeconds] = useState(2);
   const [isActive, setIsActive] = useState(false);
   const [workLoop, setWorkLoop] = useState(0);
   const [breakLoop, setBreakLoop] = useState(0);
   const [breakTimeWorkTime, setBreakTimeWorkTime] = useState("Ready to roll?");
-  const [loopCounter, setLoopCounter] = useState(0);
+  const [loopCounter, setLoopCounter] = useState(1);
 
   useEffect(() => {
     let secondsLeft = seconds;
@@ -66,6 +66,8 @@ function App() {
 
   const prototypeCounter = () => {
     setIsActive(true);
+    setBreakTimeWorkTime("Work Time!")
+    setWorkLoop(1)
   };
 
   const resetTimer = () => {
