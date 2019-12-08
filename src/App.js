@@ -8,57 +8,61 @@ function App() {
   const [isActive, setIsActive] = useState(false);
   const [workLoop, setWorkLoop] = useState(0);
   const [breakLoop, setBreakLoop] = useState(0);
-  const [pause, setPause] = useState(false);
+  const [breakTimeWorkTime, setBreakTimeWorkTime] = useState("Ready to roll?");
+  const [loopCounter, setLoopCounter] = useState(0);
 
-  //useEffect for Work Time
   useEffect(() => {
     let secondsLeft = seconds;
     let minutesLeft = minutes;
+    let loopCountertemp = loopCounter;
+    let breakCounter = breakLoop;
     let countdown = null;
-    let pauseCountdown = null;
+
+    const isOdd = num => num % 2;
 
     if (isActive) {
-      setPause(false);
       countdown = setInterval(() => {
-        if (secondsLeft === 0 && isActive) {
+        if (secondsLeft === 0 && minutesLeft > 0) {
           setMinutes(minutesLeft - 1);
           secondsLeft = 60;
         }
-        secondsLeft--;
-        setSeconds(secondsLeft);
+        if (secondsLeft > 0) {
+          secondsLeft--;
+          setSeconds(secondsLeft);
+        }
+
         if (secondsLeft === 0 && minutesLeft === 0) {
-          setIsActive(false);
-          setPause(true);
-          setWorkLoop(workLoop + 1);
+          loopCountertemp++;
+          setLoopCounter(loopCountertemp);
+          if (isOdd(loopCounter)) {
+            setBreakLoop(breakLoop + 1);
+            breakCounter++;
+            console.log("breakloop: " + breakLoop);
+            if (breakCounter % 4 === 0) {
+              setBreakTimeWorkTime("Long Break!");
+              setMinutes(0);
+              setSeconds(10);
+            } else {
+              setBreakTimeWorkTime("Short Break!");
+              setMinutes(0);
+              setSeconds(5);
+            }
+          }
+          if (!isOdd(loopCounter)) {
+            setMinutes(0);
+            setSeconds(2);
+            setBreakTimeWorkTime("Work Time!");
+            setWorkLoop(workLoop + 1);
+          }
         }
         if (isActive === false) clearInterval(countdown);
       }, 1000);
     }
 
-    // if (pause) {
-    //   setIsActive(false);
-    //   setMinutes(4);
-    //   setSeconds(59);
-    //   pauseCountdown = setInterval(() => {
-    //     if (secondsLeft === 0 && pause) {
-    //       setMinutes(minutesLeft - 1);
-    //       secondsLeft = 60;
-    //     }
-    //     secondsLeft--;
-    //     setSeconds(secondsLeft);
-    //     if (secondsLeft === 0 && minutesLeft === 0) {
-    //       setIsActive(true);
-    //       setPause(pause);
-    //       setWorkLoop(breakLoop + 1);
-    //     }
-    //     if (pause === false) clearInterval(pauseCountdown);
-    //   }, 1000);
-    // }
-
     return () => {
       clearInterval(countdown);
     };
-  }, [minutes, seconds, isActive, workLoop, pause, breakLoop]);
+  }, [minutes, seconds, isActive, loopCounter, workLoop, breakLoop]);
 
   const prototypeCounter = () => {
     setIsActive(true);
@@ -66,27 +70,28 @@ function App() {
 
   const resetTimer = () => {
     setIsActive(false);
-    setPause(false);
     setMinutes(0);
     setSeconds(0);
     setWorkLoop(0);
     setBreakLoop(0);
+    setBreakTimeWorkTime("WHYYYYY");
   };
 
-  const zerosDisabledButton =
-    (minutes === 0 && seconds === 0) || minutes === null || seconds === null;
+  const disableStopButton = isActive === false;
+
+  const disableGoButton = isActive === true;
 
   return (
     <AppTemplate
-      onMinutesChange={setMinutes}
-      onSecondsChange={setSeconds}
       minutes={minutes}
       seconds={seconds}
       onGoClick={() => prototypeCounter(minutes, seconds)}
-      zerosDisabledButton={zerosDisabledButton}
       onStopClick={() => resetTimer()}
       workLoop={workLoop}
       breakLoop={breakLoop}
+      breakTimeWorkTime={breakTimeWorkTime}
+      disableStopButton={disableStopButton}
+      disableGoButton={disableGoButton}
     />
   );
 }
