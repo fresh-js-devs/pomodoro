@@ -1,6 +1,6 @@
 import React from "react";
 import "antd/dist/antd.css";
-import { Typography, Layout, Button } from "antd";
+import { Typography, Layout, Button, Progress } from "antd";
 import Box from "../atoms/Box";
 import MainTitle from "../molecules/MainTitle";
 
@@ -18,7 +18,8 @@ const AppTemplate = props => {
     breakLoop,
     breakTimeWorkTime,
     disableStopButton,
-    disableGoButton
+    disableGoButton,
+    percents
   } = props;
   return (
     <Box margin="0 auto" flexDirection="column">
@@ -35,11 +36,16 @@ const AppTemplate = props => {
             flexDirection="column"
           >
             <Title>{breakTimeWorkTime}</Title>
+            <Box margin="10px">
+              <Progress type="circle" percent={percents} />
+            </Box>
             <Title style={{ margin: 0 }}>
-              {minutes}:{seconds}
+              {minutes < 10 ? ("0") + minutes : minutes}:{seconds < 10 ? ("0") + seconds : seconds}
             </Title>
-            <Title>Work: {workLoop}</Title>
-            <Title>Break: {breakLoop}</Title>
+            <Title level={3}>Work: {workLoop}</Title>
+            <Title level={3} style={{ marginTop: 0 }}>
+              Break: {breakLoop}
+            </Title>
           </Box>
           <Box
             marginTop="45px"
