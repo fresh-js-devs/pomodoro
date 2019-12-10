@@ -11,7 +11,8 @@ const Box = styled.div(
       marginBottom,
       marginTop,
       justifyContent,
-      alignItems
+      alignItems,
+      visibility
     } = props;
 
     return {
@@ -20,7 +21,8 @@ const Box = styled.div(
       marginBottom,
       marginTop,
       justifyContent,
-      alignItems
+      alignItems,
+      visibility
     };
   }
 );

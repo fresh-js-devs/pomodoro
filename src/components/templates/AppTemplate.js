@@ -3,6 +3,7 @@ import "antd/dist/antd.css";
 import { Typography, Layout, Button, Progress } from "antd";
 import Box from "../atoms/Box";
 import MainTitle from "../molecules/MainTitle";
+import SmallScreenQuerry from "../atoms/SmallScreenQuerry";
 
 const { Title, Paragraph } = Typography;
 
@@ -40,12 +41,14 @@ const AppTemplate = props => {
               <Progress type="circle" percent={percents} />
             </Box>
             <Title style={{ margin: 0 }}>
-              {minutes < 10 ? ("0") + minutes : minutes}:{seconds < 10 ? ("0") + seconds : seconds}
+              {minutes < 10 ? "0" + minutes : minutes}:
+              {seconds < 10 ? "0" + seconds : seconds}
             </Title>
-            <Title level={3}>Work: {workLoop}</Title>
-            <Title level={3} style={{ marginTop: 0 }}>
-              Break: {breakLoop}
-            </Title>
+
+            <SmallScreenQuerry>
+              <Title level={3}> Work: {workLoop}</Title>
+              <Title level={3}>Break: {breakLoop}</Title>
+            </SmallScreenQuerry>
           </Box>
           <Box
             marginTop="45px"
@@ -53,9 +56,11 @@ const AppTemplate = props => {
             alignItems="center"
             flexDirection="column"
           >
-            <Paragraph>Work time: 25 minutes</Paragraph>
-            <Paragraph>Short break: 5 minutes</Paragraph>
-            <Paragraph>Long break: 10 minutes</Paragraph>
+            <SmallScreenQuerry>
+              <Paragraph>Work time: 25 minutes</Paragraph>
+              <Paragraph>Short break: 5 minutes</Paragraph>
+              <Paragraph>Long break: 10 minutes</Paragraph>
+            </SmallScreenQuerry>
           </Box>
           <Box
             marginTop="15px"
@@ -81,7 +86,7 @@ const AppTemplate = props => {
         </Content>
 
         <Footer>
-          <Box justifyContent="flex-end">
+          <Box justifyContent="center">
             Pomodorify, made with love{" "}
             <span role="img" aria-label="heart">
               ❤️
