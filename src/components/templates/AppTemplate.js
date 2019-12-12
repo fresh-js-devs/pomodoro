@@ -4,25 +4,27 @@ import { Typography, Layout, Button, Progress } from "antd";
 import Box from "../atoms/Box";
 import MainTitle from "../molecules/MainTitle";
 import SmallScreenQuerry from "../atoms/SmallScreenQuerry";
+import windowSize from "react-window-size";
 
 const { Title, Paragraph } = Typography;
 
 const { Header, Footer, Content } = Layout;
 
-const AppTemplate = props => {
-  const {
-    minutes,
-    seconds,
-    onGoClick,
-    onStopClick,
-    workLoop,
-    breakLoop,
-    breakTimeWorkTime,
-    disableStopButton,
-    disableGoButton,
-    percents
-  } = props;
-  return (
+const AppTemplate = ({
+  minutes,
+  seconds,
+  onGoClick,
+  onStopClick,
+  workLoop,
+  breakLoop,
+  breakTimeWorkTime,
+  disableStopButton,
+  disableGoButton,
+  percents,
+  windowWidth
+}) => {
+  const isMobile = windowWidth <= 768;
+  return isMobile ? (
     <Box margin="0 auto" flexDirection="column">
       <Layout style={{ height: "100vh" }}>
         <Header>
@@ -95,7 +97,32 @@ const AppTemplate = props => {
         </Footer>
       </Layout>
     </Box>
+  ) : (
+    <Box margin="0 auto" flexDirection="column">
+      <Layout style={{ height: "100vh" }}>
+        <Header>
+          <MainTitle />
+        </Header>
+
+        <Content>
+          <Box justifyContent="center" margin="15%">
+            <Title>Sorry, we are mobile only <span role="img" aria-label="sadface">
+            😔
+            </span></Title>
+          </Box>
+        </Content>
+
+        <Footer>
+          <Box justifyContent="flex-end">
+            Pomodorify, made with love{" "}
+            <span role="img" aria-label="heart">
+              ❤️
+            </span>
+          </Box>
+        </Footer>
+      </Layout>
+    </Box>
   );
 };
 
-export default AppTemplate;
+export default windowSize(AppTemplate);
