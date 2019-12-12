@@ -105,10 +105,14 @@ const AppTemplate = ({
         </Header>
 
         <Content>
-          <Box justifyContent="center" margin="15%">
-            <Title>Sorry, we are mobile only <span role="img" aria-label="sadface">
-            😔
-            </span></Title>
+          <Box justifyContent="center" alignItems="center" margin="15%" flexDirection="column">
+            <Title>
+              Sorry, we are mobile only{" "}
+              <span role="img" aria-label="sadface">
+                😔
+              </span>
+            </Title>
+            <iframe title="im sorry im trying" src="https://open.spotify.com/embed/track/51CUtoKY6oPN5PIXJsCQIq" width="300" height="75" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
           </Box>
         </Content>
 
