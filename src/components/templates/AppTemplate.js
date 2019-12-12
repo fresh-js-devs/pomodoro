@@ -5,6 +5,7 @@ import Box from "../atoms/Box";
 import MainTitle from "../molecules/MainTitle";
 import SmallScreenQuerry from "../atoms/SmallScreenQuerry";
 import windowSize from "react-window-size";
+import MobileOnlyTitle from "../molecules/MobileOnlyTitle";
 
 const { Title, Paragraph } = Typography;
 
@@ -115,12 +116,7 @@ const AppTemplate = ({
             margin="15%"
             flexDirection="column"
           >
-            <Title>
-              Sorry, we are mobile only{" "}
-              <span role="img" aria-label="sadface">
-                😔
-              </span>
-            </Title>
+            <MobileOnlyTitle/>
             <iframe
               title="im sorry im trying"
               src="https://open.spotify.com/embed/track/51CUtoKY6oPN5PIXJsCQIq"
