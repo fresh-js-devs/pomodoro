@@ -40,7 +40,11 @@ const AppTemplate = ({
           >
             <Title>{breakTimeWorkTime}</Title>
             <Box margin="10px">
-              <Progress type="circle" percent={percents} />
+              <Progress
+                type="circle"
+                percent={percents}
+                strokeColor={"#ff4d4f"}
+              />
             </Box>
             <Title style={{ margin: 0 }}>
               {minutes < 10 ? "0" + minutes : minutes}:
@@ -105,14 +109,27 @@ const AppTemplate = ({
         </Header>
 
         <Content>
-          <Box justifyContent="center" alignItems="center" margin="15%" flexDirection="column">
+          <Box
+            justifyContent="center"
+            alignItems="center"
+            margin="15%"
+            flexDirection="column"
+          >
             <Title>
               Sorry, we are mobile only{" "}
               <span role="img" aria-label="sadface">
                 😔
               </span>
             </Title>
-            <iframe title="im sorry im trying" src="https://open.spotify.com/embed/track/51CUtoKY6oPN5PIXJsCQIq" width="300" height="75" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            <iframe
+              title="im sorry im trying"
+              src="https://open.spotify.com/embed/track/51CUtoKY6oPN5PIXJsCQIq"
+              width="300"
+              height="75"
+              frameborder="0"
+              allowtransparency="true"
+              allow="encrypted-media"
+            ></iframe>
           </Box>
         </Content>
 
