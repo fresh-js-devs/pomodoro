@@ -14,7 +14,7 @@ ALTOUGH, it should contain basic functionality, such as:
 
 A more detailed description of what the Pomodoro technique actually is can be [found here](https://lifehacker.com/productivity-101-a-primer-to-the-pomodoro-technique-1598992730) 
 
-Here's also a list of other Pomodoro apps, which tou can take inspiration from:
+Here's also a list of other Pomodoro apps, which you can take inspiration from:
 
 * [Tomato Timer](https://tomato-timer.com/)
 * [Focus Booster](https://www.focusboosterapp.com/)
@@ -26,7 +26,7 @@ Good luck! 🍀
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Stuff you need to install the software and how to install them
 
 ```
 NodeJS
